@@ -1,18 +1,22 @@
 {
-  "name": "test",
+  "name": "npm-scripts-build",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "./node_modules/sass/sass.js css/style.scss css/style.css",
-    "clean-css":	"./node_modules/clean-css-cli/bin/cleancss -o dist/style.min.css css/style.css",
-    "build":	"mkdir -p dist && npm run sass && npm run clean-css"
+    "sass": "sass css/style.scss css/style.css",
+    "clean-css": "cleancss -o dist/style.min.css css/style.css",
+    "lint": "jshint js/script.js",
+    "closure-compiler":	"npx google-closure-compiler --language_in=ECMASCRIPT6_STRICT --language_out=ECMASCRIPT_2015 --js=js/script.js --js_output_file=dist/script.min.js",
+    "build": "mkdir -p dist && npm run sass && npm run clean-css && npm run lint && npm run closure-compiler"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "clean-css-cli": "^4.3.0",
+    "closure-compiler": "^0.2.12",
     "sass": "^1.18.0"
-  }
+  },
+  "dependencies": {}
 }
