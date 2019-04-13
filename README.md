@@ -4,16 +4,16 @@
 - Minify CSS `css/style.css → dist/style.min.css`
 - Lint and minify JS with Closure Compiler `js/script.js → dist/script.min.js`
 
-###Usage
+**Usage**
 
 > npm run build
 
-###Installation
+**Installation**
 
 In a project with `css/style.scss` and `js/script.js`, run
 
 > npm i -D sass -g && npm i -D clean-css-cli -g && npm i -D closure-compiler
 
-###Config
+**Config**
 
 Edit `package.json`
