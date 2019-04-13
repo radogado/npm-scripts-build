@@ -7,3 +7,10 @@
 
 > npm run build
 
+Requires
+
+> {
+> 	"esversion": 6
+> }
+
+in **.jshintrc**
