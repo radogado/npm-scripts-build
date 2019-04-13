@@ -1,9 +1,17 @@
 ## Building front end with NPM scripts only
 
-> npm run build
-
 - Compile Sass `css/style.scss → css/style.css`
 - Minify CSS `css/style.css → dist/style.min.css`
 - Lint and minify JS with Closure Compiler `js/script.js → dist/script.min.js`
+
+Usage:
+
+> npm run build
+
+Installation:
+
+In a project with `css/style.scss` and `js/script.js`, run
+
+> npm i -D sass -g && npm i -D clean-css-cli -g && npm i -D closure-compiler
 
 All config in `package.json`
