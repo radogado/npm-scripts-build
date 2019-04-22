@@ -2,8 +2,9 @@
 
 - Compile Sass `css/style.scss → css/style.css`
 - Minify CSS `css/style.css → dist/style.min.css`
-- Lint and minify JS with Closure Compiler `js/script.js → dist/script.min.js`
-- Transpile with Babel to `dist/script.babel.js`. To do: include the Babel polyfill
+- Combine ES6 Modules imported in `js/script.js` into `js/script-with-modules.js` with Rollup
+- Lint and minify JS with Closure Compiler `js/script-with-modules.js → dist/script.min.js`
+- Transpile `dist/script.min.js` with Babel to `dist/script.babel.js`. To do: include the Babel polyfill
 
 **Usage**
 
