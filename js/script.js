@@ -1,5 +1,5 @@
-import display_message from './external.js';
-display_message();
+import displayMessage from './external.js';
+displayMessage();
 
 let someFunc = (a) => { console.log(a); };
 

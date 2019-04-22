@@ -1,11 +1,11 @@
 (function () {
    'use strict';
 
-   function display_message() { 
+   function displayMessage() { 
       console.log("Hello World");
    }
 
-   display_message();
+   displayMessage();
 
    let someFunc = (a) => { console.log(a); };
 

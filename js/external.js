@@ -1,5 +1,5 @@
-function display_message() { 
+function displayMessage() { 
    console.log("Hello World");
 } 
 
-export default display_message;
+export default displayMessage;
