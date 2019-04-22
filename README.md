@@ -4,8 +4,8 @@
 - Minify CSS `css/style.css` → `dist/style.min.css`
 - Include ES6 Modules imported in `js/script.js` in the main JS file with Rollup
 - Combine CSS and JS from `components/*` and prepend them to the main CSS and JS
-- Lint and minify JS with Closure Compiler `js/script-with-modules.js` → `dist/script.min.js`
-- Transpile `dist/script.min.js` with Babel to `dist/script.babel.js`, prepended by the Babel polyfill
+- Lint and minify JS with Closure Compiler `js/script-with-components-and-modules.js` → `dist/script.min.js`
+- Transpile `dist/script.min.js` with Babel to `dist/script.babel.js`, prepended with the Babel polyfill
 - Watch and build on `css/style.scss` changes
 
 **Usage**
