@@ -27,4 +27,4 @@ and add this to the `"scripts"` section of `package.json`
     "babel":                "babel --minified --compact true dist/script.min.js -o js/script.babel.js",
     "rollup":               "rollup js/script.js --file js/script-with-modules.js --format iife",
     "watch":                "onchange 'css/style.scss' -- npm run build",
-    "build":                "mkdir -p dist && npm run components && npm run sass && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js js/script.babel.js > dist/script.babel.js"
+    "build":                "npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js js/script.babel.js > dist/script.babel.js"
