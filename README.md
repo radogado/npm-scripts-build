@@ -24,11 +24,13 @@ In an NPM-initialized project with `css/style.scss` and `js/script.js`, run
 
 and add this to the `"scripts"` section of `package.json`
 
-    "components":           "cat components/**/*.scss > components/components.scss && cat components/**/*.js > components/components.js",
-    "sass":                 "sass components/components.scss components/components.css && sass css/style.scss css/style.css && cat components/components.css css/style.css > css/style-with-components.css",
-    "clean-css":            "cleancss -o dist/style.min.css css/style-with-components.css",
-    "closure-compiler":     "cat components/components.js js/script-with-modules.js > js/script-with-components-and-modules.js && npx google-closure-compiler --language_in=ECMASCRIPT6_STRICT --language_out=ECMASCRIPT_2015 --js=js/script-with-components-and-modules.js --js_output_file=dist/script.min.js",
-    "babel":                "babel --minified --compact true dist/script.min.js -o js/script.babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js js/script.babel.js > dist/script.babel.js",
-    "rollup":               "rollup js/script.js --file js/script-with-modules.js --format iife",
-    "watch":                "onchange 'css/style.scss' -- npm run build",
-    "build":                "npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel"
+    "components":        "cat components/**/*.scss > components/components.scss && cat components/**/*.js > components/components.js",
+    "sass":              "sass components/components.scss components/components.css && sass css/style.scss css/style.css && cat components/components.css css/style.css > css/style-with-components.css",
+    "clean-css":         "cleancss -o dist/style.min.css css/style-with-components.css",
+    "closure-compiler":  "cat components/components.js js/script-with-modules.js > js/script-with-components-and-modules.js && npx google-closure-compiler --language_in=ECMASCRIPT6_STRICT --language_out=ECMASCRIPT_2015 --js=js/script-with-components-and-modules.js --js_output_file=dist/script.min.js",
+    "babel":             "babel --minified --compact true dist/script.min.js -o js/script.babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js js/script.babel.js > dist/script.babel.js",
+    "rollup":            "rollup js/script.js --file js/script-with-modules.js --format iife",
+    "watch":             "onchange 'css/style.scss' -- npm run build",
+    "watch:css":         "onchange 'css/**/*.scss' 'components/**/*.scss' -e 'components/*.*' -- npm run css",
+    "css":               "npm run components && npm run sass && npm run clean-css",
+    "build":             "npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel"
