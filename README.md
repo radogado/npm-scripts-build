@@ -10,6 +10,8 @@
 
 **Usage**
 
+> npm run css
+
 > npm run build
 
 > npm run watch
