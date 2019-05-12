@@ -16,6 +16,8 @@
 
 > npm run watch
 
+> npm run watch:css
+
 **Installation**
 
 In an NPM-initialized project with `css/style.scss` and `js/script.js`, run
