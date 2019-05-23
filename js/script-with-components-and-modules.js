@@ -1,4 +1,7 @@
-console.log('Accordion init');console.log('Tooltip init');(function () {
+import displayMessageAccordion from './modules/external.js';
+displayMessageAccordion();
+console.log('Accordion init');
+console.log('Tooltip init');(function () {
    'use strict';
 
    function displayMessage() { 
