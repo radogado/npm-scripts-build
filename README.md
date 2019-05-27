@@ -2,9 +2,9 @@
 
 - Compile Sass `css/style.scss` → `css/style.css`
 - Minify CSS `css/style.css` → `dist/style.min.css`
-- Include ES6 Modules imported in `js/script.js` in the main JS file with Rollup
+- Include ES6 Modules imported in `js/*.js` in the main JS file with Rollup
 - Combine Sass and JS from `components/*`, compile Sass and prepend them to the main CSS and JS
-- Lint and minify JS with Closure Compiler `js/script-with-components-and-modules.js` → `dist/script.min.js`
+- Lint and minify JS with Closure Compiler → `dist/script.min.js`
 - Transpile `dist/script.min.js` with Babel to `dist/script.babel.js`, prepended with the Babel polyfill
 - Watch and build on `css/style.scss` changes
 
@@ -26,16 +26,16 @@ In an NPM-initialized project with `css/style.scss` and `js/script.js`, run
 
 add this to the `"scripts"` section of `package.json`
 
-    "components":         "cat components/**/*.scss > components/components.scss && cat components/**/*.js > components/components.js",
-    "sass":               "sass components/components.scss components/components.css && sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cat components/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css",
-    "clean-css":          "cleancss -o dist/style.min.css $npm_package_config_css_folder/style-with-components.css",
-    "closure-compiler":   "cat components/components.js $npm_package_config_js_folder/script-with-modules.js > $npm_package_config_js_folder/script-with-components-and-modules.js && npx google-closure-compiler --language_in=ECMASCRIPT6_STRICT --language_out=ECMASCRIPT_2015 --js=$npm_package_config_js_folder/script-with-components-and-modules.js --js_output_file=dist/script.min.js",
-    "babel":              "babel --minified --compact true dist/script.min.js -o $npm_package_config_js_folder/script.babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js $npm_package_config_js_folder/script.babel.js > dist/script.babel.js",
-    "rollup":             "rollup $npm_package_config_js_folder/script.js --file $npm_package_config_js_folder/script-with-modules.js --format iife",
-    "watch":              "onchange '$npm_package_config_css_folder/style.scss' -- npm run build",
-    "watch:css":          "onchange '$npm_package_config_css_folder/**/*.scss' 'components/**/*.scss' -e 'components/*.*' -- npm run css",
-    "css":                "npm run components && npm run sass && npm run clean-css",
-    "build":              "npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel"
+    "components":       "cat components/**/*.scss > components/components.scss && cat components/**/*.js > components/components.js",
+    "sass":             "sass components/components.scss components/components.css && sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cat components/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css",
+    "clean-css":        "cleancss -o dist/style.min.css $npm_package_config_css_folder/style-with-components.css",
+    "closure-compiler": "cat components/components.js temp/script-bundle-modules.js > temp/script-with-components-and-modules.js && npx google-closure-compiler --language_in=ECMASCRIPT6_STRICT --language_out=ECMASCRIPT_2015 --js=temp/script-with-components-and-modules.js --js_output_file=dist/script.min.js",
+    "babel":            "babel --minified --compact true dist/script.min.js -o temp/script.babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js temp/script.babel.js > dist/script.babel.js",
+    "rollup":           "cat $npm_package_config_js_folder/*.js > $npm_package_config_js_folder/script-bundle.js && rollup $npm_package_config_js_folder/script-bundle.js --file temp/script-bundle-modules.js --format iife && rm $npm_package_config_js_folder/script-bundle.js",
+    "watch":            "onchange '$npm_package_config_css_folder/style.scss' -- npm run build",
+    "watch:css":        "onchange '$npm_package_config_css_folder/**/*.scss' 'components/**/*.scss' -e 'components/*.*' -- npm run css",
+    "css":              "npm run components && npm run sass && npm run clean-css",
+    "build":            "rm -rf temp && mkdir temp && npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel && rm -rf temp"
 
 and this to the `"config"` section:
 
