@@ -1,5 +1,5 @@
 function displayMessage() { 
-   console.log("Hello World");
+   console.log("First script's imported module");
 } 
 
 export default displayMessage;
