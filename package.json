@@ -18,8 +18,7 @@
     "watch": "cross-var onchange '$npm_package_config_css_folder/style.scss' -- npm run build",
     "watch:css": "cross-var onchange '$npm_package_config_css_folder/**/*.scss' 'components/**/*.scss' -e 'components/*.*' -- npm run css",
     "css": "npm run components && npm run sass && npm run clean-css",
-    "build": "rm -rf temp && mkdir temp && npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel && rm -rf temp",
-    "loop": "cross-var bash -c 'for f in $npm_package_config_js_folder/*.js; do ls; done'"
+    "build": "rm -rf temp && mkdir temp && npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel && rm -rf temp"
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +28,8 @@
     "clean-css-cli": "^4.3.0",
     "closure-compiler": "^0.2.12",
     "rollup": "^1.10.1",
-    "sass": "^1.19.0"
+    "sass": "^1.19.0",
+    "cross-var": ""
   },
   "dependencies": {}
 }

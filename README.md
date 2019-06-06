@@ -27,11 +27,11 @@ In an NPM-initialized project with `css/style.scss` and `js/script.js`, run
 add this to the `"scripts"` section of `package.json`
 
     "components":       "cat components/**/*.scss > components/components.scss && cat components/**/*.js > components/components.js",
-    "sass":             "sass components/components.scss components/components.css && cross-var sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cross-var cat components/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css",
+    "sass":             "cross-var \"sass components/components.scss components/components.css && sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cat components/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css\"",
     "clean-css":        "cross-var cleancss -o dist/style.min.css $npm_package_config_css_folder/style-with-components.css",
     "closure-compiler": "cat components/components.js temp/script.rollup.js > temp/script-with-components-and-modules.js && npx google-closure-compiler --language_in=ECMASCRIPT6_STRICT --language_out=ECMASCRIPT_2015 --js=temp/script-with-components-and-modules.js --js_output_file=dist/script.min.js",
     "babel":            "babel --minified --compact true dist/script.min.js -o temp/script.babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js temp/script.babel.js > dist/script.babel.js",
-    "rollup":           "cross-var 'for f in $npm_package_config_js_folder/*.js; do rollup $f --format iife --dir temp/rollup --no-strict; done' && cat temp/rollup/*.js > temp/script.rollup.js",
+    "rollup":           "cross-var bash -c \"rollup $npm_package_config_js_folder/*.js --dir temp/rollup --format cjs --no-strict && cat temp/rollup/*.js > temp/script.rollup.js\"",
     "watch":            "cross-var onchange '$npm_package_config_css_folder/style.scss' -- npm run build",
     "watch:css":        "cross-var onchange '$npm_package_config_css_folder/**/*.scss' 'components/**/*.scss' -e 'components/*.*' -- npm run css",
     "css":              "npm run components && npm run sass && npm run clean-css",
@@ -41,3 +41,5 @@ and this to the `"config"` section:
 
     "css_folder":         "css",
     "js_folder":          "js"
+
+and replace ``css`` and ``js`` with your folders.
