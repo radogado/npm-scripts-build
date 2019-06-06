@@ -22,18 +22,18 @@
 
 In an NPM-initialized project with `css/style.scss` and `js/script.js`, run
 
-> npm i -D sass -g && npm i -D clean-css-cli -g && npm i -D closure-compiler && npm i -D babel-cli -g && npm i -D @babel/polyfill && npm i -D rollup -g && npm i -D onchange -g
+> npm i -D sass -g && npm i -D clean-css-cli -g && npm i -D closure-compiler && npm i -D babel-cli -g && npm i -D @babel/polyfill && npm i -D rollup -g && npm i -D onchange -g && npm i -D -g cross-var
 
 add this to the `"scripts"` section of `package.json`
 
     "components":       "cat components/**/*.scss > components/components.scss && cat components/**/*.js > components/components.js",
-    "sass":             "sass components/components.scss components/components.css && sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cat components/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css",
-    "clean-css":        "cleancss -o dist/style.min.css $npm_package_config_css_folder/style-with-components.css",
+    "sass":             "sass components/components.scss components/components.css && cross-var sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cross-var cat components/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css",
+    "clean-css":        "cross-var cleancss -o dist/style.min.css $npm_package_config_css_folder/style-with-components.css",
     "closure-compiler": "cat components/components.js temp/script.rollup.js > temp/script-with-components-and-modules.js && npx google-closure-compiler --language_in=ECMASCRIPT6_STRICT --language_out=ECMASCRIPT_2015 --js=temp/script-with-components-and-modules.js --js_output_file=dist/script.min.js",
     "babel":            "babel --minified --compact true dist/script.min.js -o temp/script.babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js temp/script.babel.js > dist/script.babel.js",
-    "rollup":           "rollup $npm_package_config_js_folder/*.js --dir temp/rollup --format cjs --no-strict && cat temp/rollup/*.js > temp/script.rollup.js",
-    "watch":            "onchange '$npm_package_config_css_folder/style.scss' -- npm run build",
-    "watch:css":        "onchange '$npm_package_config_css_folder/**/*.scss' 'components/**/*.scss' -e 'components/*.*' -- npm run css",
+    "rollup":           "cross-var 'for f in $npm_package_config_js_folder/*.js; do rollup $f --format iife --dir temp/rollup --no-strict; done' && cat temp/rollup/*.js > temp/script.rollup.js",
+    "watch":            "cross-var onchange '$npm_package_config_css_folder/style.scss' -- npm run build",
+    "watch:css":        "cross-var onchange '$npm_package_config_css_folder/**/*.scss' 'components/**/*.scss' -e 'components/*.*' -- npm run css",
     "css":              "npm run components && npm run sass && npm run clean-css",
     "build":            "rm -rf temp && mkdir temp && npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel && rm -rf temp"
 
