@@ -19,7 +19,7 @@
     "watch":              "cross-var bash -c \"onchange '$npm_package_config_css_folder/style.scss' -- npm run build\"",
     "watch:css":          "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' '$npm_package_config_components_folder/**/*.scss' -e '$npm_package_config_components_folder/*.*' -- npm run css\"",
     "css":                "npm run components && npm run sass && npm run clean-css",
-    "build":              "rm -rf temp && mkdir temp && npm run components && npm run sass && rm -rf dist && mkdir dist && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel && npm run custom || true && rm -rf temp"
+    "build":              "rm -rf temp && mkdir temp && rm -rf dist && mkdir dist && (npm run custom || true) && npm run components && npm run sass && npm run clean-css && npm run rollup && npm run closure-compiler && npm run babel && rm -rf temp"
   },
   "author": "",
   "license": "ISC",
