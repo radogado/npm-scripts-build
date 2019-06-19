@@ -1,0 +1,308 @@
+/*******************************************************************************************************************************************************
+  Brand 2 variables 
+ ******************************************************************************************************************************************************/
+$brand-color-navy:            #2d2341;
+$brand-color-tan:             #d7c3b9;
+$brand-color-coral:           #ff5073;
+$brand-color-lavender:        #7887e6;
+$brand-color-teal:            #00c8d2;
+
+
+/*******************************************************************************************************************************************************
+  Bootsrap variables overrides
+ ******************************************************************************************************************************************************/
+$font-family-sans-serif:      'Source Sans Pro', Arial, Helvetica, sans-serif;
+$body-color:                  #2d2341;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px
+);
+
+$spacers: (
+  6:  8px,
+  7:  20px,
+  8:  32px,
+  9:  60px,
+  10: 120px,
+  11: 200px
+);
+
+/* Modal */
+$modal-backdrop-bg:           $brand-color-navy; 
+
+/* Dropdowns */
+$dropdown-border-radius:     0px;
+$dropdown-border-color:      rgba($brand-color-navy, 0.1);
+$dropdown-padding-y:         0px;
+$dropdown-spacer:            0px;
+$dropdown-link-hover-color:  #ffffff;
+$dropdown-link-hover-bg:     $brand-color-lavender;
+$dropdown-link-active-color: #ffffff;
+$dropdown-link-active-bg:    $brand-color-lavender;
+$dropdown-item-padding-x:    map-get($spacers, 7);
+$dropdown-item-padding-y:    12px;
+
+/* Tables */
+$table-head-color:            #ffffff; 
+$table-head-bg:               $brand-color-lavender;
+$table-border-color:          rgba(255, 255, 255, 0.2);
+$table-dark-bg:               $brand-color-navy;
+$table-dark-color:            #ffffff; 
+$table-dark-border-color:     rgba(47, 34, 67, 0.25);
+
+/* Cards */
+$card-spacer-x:               map-get($spacers, 7);
+$card-border-radius:          8px;
+
+
+/*******************************************************************************************************************************************************
+  Custom variables 
+ ******************************************************************************************************************************************************/
+$images:                      "../assets/images";
+
+/****************************************************************************
+  Sections 
+ ***************************************************************************/
+$section-light-bg:           #ffffff;
+$section-light-color:        $brand-color-navy;
+$section-dark-bg:            $brand-color-navy;
+$section-dark-color:         #ffffff;
+$section-bordered-border:    solid 1px rgba($brand-color-navy, 0.2);
+
+/****************************************************************************
+ Global Navigation 
+ ***************************************************************************/
+$nav-item-mobile-hover-bg:    $brand-color-lavender;
+$nav-hr-border:               1px solid rgba(#ffffff, 0.4); 
+$nav-item-text-hover-border:  2px solid $brand-color-lavender;
+$nav-text-color:              $section-dark-color;
+$nav-login-bg:                url("#{$images}/icons/login-white.svg") center center no-repeat;
+$nav-search-bg:               url("#{$images}/icons/search-white.svg") center center no-repeat;
+$nav-burger-bg:               url("#{$images}/icons/burger-menu-white.svg") center center no-repeat;
+$nav-close-bg:                url("#{$images}/icons/close-white.svg") center center no-repeat;
+$nav-text-dark-color:         $section-light-color;
+$nav-text-dark-login-bg:      url("#{$images}/icons/login-navy.svg") center center no-repeat;
+$nav-text-dark-search-bg:     url("#{$images}/icons/search-navy.svg") center center no-repeat;
+$nav-text-dark-burger-bg:     url("#{$images}/icons/burger-menu-navy.svg") center center no-repeat;
+
+/****************************************************************************
+  Footer 
+ ***************************************************************************/
+$footer-hr-border:            solid 1px rgba(#ffffff, 0.2);
+
+/****************************************************************************
+  Scroll Progress Bar 
+ ***************************************************************************/
+$progress-scroll-bg:          transparent;
+$progress-scroll-progress-bg: $brand-color-lavender;
+
+/****************************************************************************
+ Tabs 
+ ***************************************************************************/
+$nav-tabs-border:             solid 1px rgba($brand-color-navy, 0.2);
+$nav-tabs-border-light:       solid 1px rgba(#ffffff, 0.3);
+$nav-link-border:             solid 2px transparent;
+$nav-link-hover-border:       $brand-color-lavender;
+$nav-link-active-border:      $brand-color-lavender;
+
+/****************************************************************************
+ Prev / Next Nav Links 
+ ***************************************************************************/
+$arrow-nav-bg:                #f9f5f2; 
+$arrow-nav-small-color:       #9b9b9b; 
+$arrow-nav-left-bg:           url("#{$images}/icons/arrow-flat-left.svg") center center no-repeat;
+$arrow-nav-right-bg:          url("#{$images}/icons/arrow-flat-right.svg") center center no-repeat;
+
+/****************************************************************************
+ Lists 
+ ***************************************************************************/
+$list-bullet-color:           $brand-color-lavender;
+$list-checked-item-border:    1px solid rgba($brand-color-navy, 0.3);
+$list-checked-item-bg:        url("#{$images}/icons/check-teal.svg") left 36px no-repeat; 
+$list-dots-separ-color:       #9b9b9b;
+
+/****************************************************************************
+ Text 
+ ***************************************************************************/
+$block-indent-border:         solid 2px $brand-color-lavender;
+$text-details-color:          #666666;
+
+/****************************************************************************
+ Links 
+ ***************************************************************************/
+$link-play-border:           solid 1px currentColor;
+$link-play-bg:               url("#{$images}/icons/play-white.svg") center center no-repeat;
+$link-play-dark-bg:          url("#{$images}/icons/play-navy.svg") center center no-repeat;
+
+/****************************************************************************
+ Forms 
+ ***************************************************************************/
+$form-control-slim-color:     #a0a0a0;
+$form-control-slim-bg:        transparent;
+$form-control-slim-border:    solid 1px $brand-color-navy;
+$control-slim-light-border:   solid 1px #ffffff;
+$control-slim-active-color:   #ffffff;
+$control-slim-active-border:  solid 2px $brand-color-lavender;
+$control-slim-light-active-color:   $body-color;
+$form-feedback-invalid-color:       $brand-color-coral;
+$form-label-slim-complete-color:    $brand-color-navy;
+$form-label-slim-active-color:      $brand-color-lavender;
+
+/****************************************************************************
+  Buttons 
+ ***************************************************************************/
+$btn-primary-bg:              $brand-color-lavender;
+$btn-primary-color:           #ffffff;
+$btn-primary-hover-bg:        darken($brand-color-lavender, 10%);
+$btn-primary-hover-color:     #ffffff;
+$btn-primary-active-bg:       darken($brand-color-lavender, 10%);
+$btn-primary-active-color:    #ffffff;
+$btn-primary-disabled-bg:     rgba($brand-color-lavender, 0.4);
+
+$btn-secondary-bg:            transparent;
+$btn-secondary-color:         $brand-color-lavender;
+$btn-secondary-border:        1px solid $brand-color-lavender;
+$btn-secondary-hover-bg:      transparent;
+$btn-secondary-hover-color:   $brand-color-lavender;
+$btn-secondary-hover-border:  2px solid $brand-color-lavender;
+$btn-secondary-active-bg:     transparent;
+$btn-secondary-active-color:  $brand-color-lavender;
+$btn-secondary-active-border: 2px solid $brand-color-lavender;
+$btn-secondary-disabled-bg:   rgba($brand-color-lavender, 0.4);
+
+$btn-secondary-dark-bg:       transparent;
+$btn-secondary-dark-color:    #ffffff;
+$btn-secondary-dark-border:   1px solid #e8e8e8;
+$btn-secondary-dark-hover-bg: transparent;
+$btn-secondary-dark-hover-color:   #ffffff;
+$btn-secondary-dark-hover-border:  2px solid #ffffff;
+$btn-secondary-dark-active-bg:transparent;
+$btn-secondary-dark-active-color:  #ffffff;
+$btn-secondary-dark-active-border: 2px solid #ffffff;
+$btn-secondary-dark-disabled-bg:   rgba(255, 255, 255, 0.3);
+
+$btn-tertiary-bg:             #ffffff;
+$btn-tertiary-color:          $brand-color-lavender;
+$btn-tertiary-hover-bg:       darken($brand-color-lavender, 10%);
+$btn-tertiary-hover-color:    #ffffff;
+$btn-tertiary-active-bg:      darken($brand-color-lavender, 10%);
+$btn-tertiary-active-color:   #ffffff;
+$btn-tertiary-disabled-bg:    rgba($brand-color-lavender, 0.4);
+
+$btn-inline-text-bg:          transparent;
+$btn-inline-text-border:      solid 1px $brand-color-lavender;
+$btn-inline-coral-border:     $brand-color-coral;
+
+$btn-lead-bg:                 transparent;
+$btn-lead-border:             1px solid rgba($brand-color-navy, 0.3);
+$btn-lead-hover-bg:           transparent;
+$btn-lead-hover-border:       1px solid $brand-color-lavender;
+$btn-lead-active-bg:          transparent;
+$btn-lead-active-border:      2px solid $brand-color-lavender;
+
+$btn-play-bg:                 #FF5073 url("#{$images}/icons/video-play.svg") center center no-repeat;
+
+/****************************************************************************
+  Dropdowns 
+ ***************************************************************************/
+$dropdown-toggle-bg:         url("#{$images}/icons/toggle-down.svg") center center no-repeat;
+$dropdown-toggle-light-bg:   url("#{$images}/icons/toggle-down-white.svg") center center no-repeat;
+
+$dropdown-inline-coral-bg:   $brand-color-coral;
+
+/****************************************************************************
+  Checkboxes 
+ ***************************************************************************/
+$cb-border:                   solid 1px #c9c8cd;
+$cb-hover-shadow:             0px 0 0px 12px $brand-color-lavender;
+$cb-hover-border:             solid 1px $brand-color-lavender;
+$cb-box-shadow:               0px 0 0px 12px rgba($brand-color-lavender, 0.25);
+$cb-disabled-color:           #9691a0;
+$cb-disabled-bg:              #d5d3d9;
+$cb-check:                    url("#{$images}/icons/check-white.svg") center center no-repeat; 
+
+/****************************************************************************
+  List with Social Media Icons 
+ ***************************************************************************/
+$social-border:               solid 1px #ffffff;
+$social-dark-color:           #9b9b9b;
+$social-dark-icons-color:     #ffffff;
+$social-dark-icons-bg:        $brand-color-navy;
+
+/****************************************************************************
+  List with Tags and Label
+ ***************************************************************************/
+$list-tags-label-color:       #9b9b9b;
+$list-tags-color:             $brand-color-lavender;
+
+/****************************************************************************
+  Video 
+ ***************************************************************************/
+$video-overlay-bg:            $brand-color-navy;
+
+/****************************************************************************
+  Quotes 
+ ***************************************************************************/
+$quotes-bg:                   $brand-color-lavender url("#{$images}/icons/quotes.svg") center center no-repeat;
+
+/****************************************************************************
+  Cards 
+ ***************************************************************************/
+$card-hover-shadow:           0 0 30px rgba($brand-color-navy, 0.2);
+$card-events-date-bg:         $brand-color-coral;
+$card-main-bg:                url("#{$images}/card-main.svg") center center no-repeat;
+$card-main-mobile-bg:         url("#{$images}/card-main-mobile.svg") center center no-repeat;
+$card-article-img-hover-shadow:    0px -6px 20px 0px rgba($brand-color-navy, 0.2);
+$card-action-text-color:      $brand-color-lavender;
+$card-report-bg:              url("#{$images}/icons/report-pdf.svg") right map-get($spacers, 8) bottom map-get($spacers, 8) no-repeat;
+$card-separator-border:       solid 1px rgba($brand-color-lavender, 0.25);
+$card-blog-top-bg:            #ffffff;
+$card-blog-img-hover-shadow:  -6px 0px 20px 0px rgba($brand-color-navy, 0.2);
+$card-author-counter-color:   #9b9b9b;
+
+/****************************************************************************
+  3 Column Block Free Column Dots 
+ ***************************************************************************/
+$dot-1-bg:                    $brand-color-tan;
+$dot-2-bg:                    $brand-color-coral;
+$dot-3-bg:                    $brand-color-lavender;
+
+/****************************************************************************
+  Developer 
+ ***************************************************************************/
+$dev-code-bg:                 $brand-color-navy;
+$dev-code-color:              #ffffff;
+$dev-code-highlight-color:    $brand-color-teal;
+$dev-code-lines-bg:           rgba(#ffffff, 0.1);
+
+/****************************************************************************
+  Journey Options
+ ***************************************************************************/
+$journey-options-bg:          url("#{$images}/journey-circles.svg") top center no-repeat;
+
+/****************************************************************************
+  Article Filters Bar
+ ***************************************************************************/
+$filter-accordion-color:      #a0a0a0;
+
+/****************************************************************************
+  Accordion Mobile Only
+ ***************************************************************************/
+$accordion-expand-bg:         url("#{$images}/icons/accordion-expand.svg") right center no-repeat; 
+$accordion-collapse-bg:       url("#{$images}/icons/accordion-collapse.svg") right center no-repeat; 
+$accordion-toggle-border:     solid 1px $brand-color-navy;
+
+/****************************************************************************
+  Blog Cards Carousel
+ ***************************************************************************/
+$crsl-blogcards-dots-bg:      $brand-color-navy;
+
+/****************************************************************************
+  Blog Author Intro
+ ***************************************************************************/
+$author-intro-name-color:     $brand-color-lavender;
+
+
+

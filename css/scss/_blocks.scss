@@ -1,0 +1,548 @@
+/****************************************************************************
+ Block with Free Content - Image, Title, Paragraph, Link
+ ***************************************************************************/
+.block--free-content {
+    text-align: center;
+    
+    img {
+        max-width: 100%;
+        margin-bottom: map-get($spacers, 8);
+    }
+
+    h3 {
+        margin-bottom: map-get($spacers, 7);
+    }
+
+    p {
+        @include text--sm();
+        line-height: 26px;
+    }
+
+    a {
+        @include link--text();
+    }
+
+    .mask--circle {
+        margin-bottom: map-get($spacers, 8);
+
+        img { 
+            margin-bottom: 0px; 
+            max-width: 304px;
+        }
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .block--free-content {
+        padding-bottom: map-get($spacers, 9);
+    }
+}
+
+/****************************************************************************
+ Animated Dot for 3 Column block--free-content Module
+ ***************************************************************************/
+ @keyframes dot-move--1 {
+    0% { 
+        transform: rotate(0deg);
+        width: 5px;
+        height: 5px;
+    }
+
+    100% { 
+        transform: rotate(82deg); 
+        width: 44px;
+        height: 44px;
+    }
+} 
+
+@keyframes dot-move--2 {
+    from {
+        transform: rotate(0deg);
+        width: 5px;
+        height: 5px;
+    }
+
+    to {
+        transform: rotate(-40deg);
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@keyframes dot-move--3 {
+    from {
+        transform: rotate(0deg);
+        width: 5px;
+        height: 5px;
+    }
+
+    to {
+        transform: rotate(-28deg);
+        width: 44px;
+        height: 44px;
+    }
+}
+
+.mask__dot {
+    display: block;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%; 
+    z-index: 1;
+}
+
+.mask__dot.dot-move--1.animate {
+    animation: dot-move--1 0.8s forwards ease-out;
+    transform-origin: 100px -10px;
+    background-color: $dot-1-bg;
+    top: 130px;
+    left: calc(50% - 170px);
+}
+
+.mask__dot.dot-move--2.animate {
+    animation: dot-move--2 0.8s forwards ease-out;
+    transform-origin: 120px 20px;
+    background-color: $dot-2-bg;
+    top: 160px;
+    left: calc(50% - 170px);
+}
+
+.mask__dot.dot-move--3.animate {
+    animation: dot-move--3 0.8s forwards ease-out;
+    transform-origin: 50px 300px;
+    background-color: $dot-3-bg;
+    top: -20px;
+    left: 50%;
+}
+
+/****************************************************************************
+ Block with Left Border
+ ***************************************************************************/
+.block--border-indent {
+    padding: map-get($spacers, 7) 0 map-get($spacers, 7) map-get($spacers, 8);
+    border-left: $block-indent-border;
+
+    &.border-indent--coral {
+        border-left-color: $brand-color-coral;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .block--border-indent {
+        padding: map-get($spacers, 8) 0 map-get($spacers, 8) 40px;
+    }
+}
+
+/****************************************************************************
+ Award Block
+ ***************************************************************************/
+.block--award {
+    background: url("#{$images}/icons/award.svg") left top no-repeat; 
+    background-size: 80px auto;
+    padding-top: 60px;
+    margin-bottom: map-get($spacers, 7);
+    min-height: 80px;
+
+    h5 {
+        margin-bottom: 0px;
+        padding-top: map-get($spacers, 6);
+    }
+
+    p {
+        margin-bottom: 0px;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .block--award {
+        background-size: 100px auto;
+        padding-top: 0px;
+        padding-left: 130px;
+    }
+}
+
+/****************************************************************************
+  Results Block
+ ***************************************************************************/
+.block--result {
+    text-align: center;
+
+    span {
+        @include title--xl();
+        display: inline-block;
+        margin-bottom: map-get($spacers, 6);
+    }
+
+    p {
+        @include text--sm(); 
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .block--result {
+        span {
+            margin-bottom: map-get($spacers, 7); 
+        }
+    }
+}
+
+/****************************************************************************
+  Logos List Block
+ ***************************************************************************/
+.block--list-images {
+    @include list-unstyled();
+
+    li {
+        display: inline-block;
+        margin-right: map-get($spacers, 7); 
+        margin-bottom: map-get($spacers, 7);
+    }
+
+    a {
+        display: inline-block;
+    }
+
+    img,
+    .module--text-image .module__text & img {
+        max-width: 160px; 
+    }
+}
+
+@include media-breakpoint-up(md) {
+    .block--list-images {
+        li {
+            margin-right: map-get($spacers, 8); 
+            margin-bottom: map-get($spacers, 8); 
+        }
+
+        img,
+        .module--text-image .module__text & img {
+            max-width: 180px;
+        }
+    }
+}
+
+/****************************************************************************
+  Row with Items/Logos
+ ***************************************************************************/
+.module__list-in-row {
+    .section--bordered {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+}
+
+.block--list-images-row {
+    @include list-unstyled();
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    li {
+        margin: 10px 5px;
+    }
+
+    a {
+        display: inline-block;
+    }
+
+    img {
+        max-width: 200px;
+    }
+}
+
+/****************************************************************************
+  Block with Title and Inline Links
+ ***************************************************************************/
+.block-title-options--inline {
+    text-align: center;
+
+    h5 {
+        display: inline-block;
+        font-size: 24px;
+    }
+}
+
+/****************************************************************************
+  List with Social Media Icon Links
+ ***************************************************************************/
+ @mixin list--social()  {
+    ul {
+        @include list-unstyled;
+        display: flex;
+
+        li {
+            margin-left: map-get($spacers, 7);
+
+            &:first-child {
+                margin-left: 0px;
+            }
+        }
+
+        a {
+            border: $social-border;
+            border-radius: 30px;
+            display: block;
+            width: 40px;
+            height: 40px;
+
+            & > img, & > svg, span.icon-container {
+                max-width: 20px;
+                display: block;
+                position: relative;
+                top: 50%;
+                margin: 0 auto;
+                transform: translateY(-50%);
+            }
+
+            &:hover {
+                border-width: 2px;
+            }
+        }
+    }
+}
+
+.social {
+    @include list--social();
+}
+
+.social--dark {
+    @include list--social();
+    @include text--sm();
+    color: $social-dark-color;
+
+    ul {
+        color: $social-dark-icons-color;
+        padding-top: map-get($spacers, 6);
+
+        a {
+            border: none;
+            background-color: $social-dark-icons-bg;
+        }
+    }  
+
+    @include media-breakpoint-up(lg) {
+        display: flex;
+        align-items: center;
+
+        ul {
+            padding-left: map-get($spacers, 6);
+            padding-top: 0;
+        }
+    }
+}
+
+/****************************************************************************
+  List with Tags and Label
+ ***************************************************************************/
+.block--tags {
+    @include text--sm();
+    color: $list-tags-label-color;
+
+    ul {
+        @include list-unstyled;
+        display: block;
+    
+        li {
+            display: inline-block;
+    
+            a {
+                @include link--text();
+                color: $list-tags-color;
+            }
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        ul {
+            display: inline-block;
+        }
+    }
+}
+
+.block--connect-row {
+    .social--dark {
+        ul {
+            padding-bottom: map-get($spacers, 7);
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        .social--dark {
+            ul {
+                padding-bottom: 0;
+            }
+        }
+
+        .block--tags {
+            padding-top: map-get($spacers, 6);
+        }
+    }
+}
+
+/****************************************************************************
+  Large Space Design for a Quote Block
+ ***************************************************************************/
+.block-quote--lg {
+    text-align: center;
+
+    small {
+        @include text--details;
+    }
+
+    @include media-breakpoint-up(md) {
+        h2 {
+            line-height: 56px;
+        }
+    }
+}
+
+/****************************************************************************
+  Image with Circles on Top Variations
+ ***************************************************************************/
+.img--circles {
+    position: relative;
+
+    /* Round image with three circles on top variation 1 */
+    .circles--lg-1 {
+        span {
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+        }
+    
+        .circle1 {
+            width: 120px;
+            height: 120px;
+            background-color: $brand-color-coral;
+            left: calc(50% - 230px);
+            top: calc(50% - 120px);
+        }
+    
+        .circle2 {
+            width: 35px;
+            height: 35px;
+            background-color: $brand-color-teal;
+            left: calc(50% - 120px);
+            bottom: 10px;
+            z-index: 1;
+        }
+    
+        .circle3 {
+            width: 65px;
+            height: 65px;
+            background-color: $brand-color-lavender;
+            left: calc(50% + 110px);
+            top: 25px;
+            z-index: 1;
+        }
+    }
+
+    /* Round image with three circles on top variation 2 */
+    .circles--lg-2 {
+        span {
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+        }
+    
+        .circle1 {
+            width: 65px;
+            height: 65px;
+            background-color: $brand-color-coral;
+            left: calc(50% - 160px);
+            top: calc(50% + 100px);
+            z-index: 1;
+        }
+    
+        .circle2 {
+            width: 120px;
+            height: 120px;
+            background-color: $brand-color-teal;
+            left: calc(50% + 105px);
+            top: calc(50% + 10px);
+        }
+    
+        .circle3 {
+            width: 35px;
+            height: 35px;
+            background-color: $brand-color-lavender;
+            left: calc(50% + 100px);
+            top: 25px;
+            z-index: 1;
+        }
+    }
+
+    /* Round image with three circles on top variation 3 */
+    .circles--lg-3 {
+        span {
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+        }
+    
+        .circle1 {
+            width: 35px;
+            height: 35px;
+            background-color: $brand-color-coral;
+            left: calc(50% - 140px);
+            top: 30px;
+            z-index: 1;
+        }
+    
+        .circle2 {
+            width: 120px;
+            height: 120px;
+            background-color: $brand-color-lavender;
+            left: -40px;
+            top: calc(50% + 10px);
+        }
+    
+        .circle3 {
+            width: 60px;
+            height: 60px;
+            background-color: $brand-color-teal;
+            left: calc(50% + 105px);
+            top: calc(50% + 105px);
+            z-index: 1;
+        }
+    }
+
+    /* Rectangle wide image with three circles on top */
+    .circles--xl-1 {
+        span {
+            display: block;
+            position: absolute;
+            border-radius: 50%;
+        }
+    
+        .circle1 {
+            width: 60px;
+            height: 60px;
+            background-color: $brand-color-coral;
+            left: 0;
+            top: 40px;
+            transform: translate(-50%, 0);
+        }
+    
+        .circle2 {
+            width: 110px;
+            height: 110px;
+            background-color: $brand-color-teal;
+            right: 0;
+            top: calc(50% - 200px);
+            transform: translate(50%, 0);
+        }
+    
+        .circle3 {
+            width: 45px;
+            height: 45px;
+            background-color: $brand-color-tan;
+            left: 200px;
+            bottom: 0;
+            transform: translate(0, 50%);
+        }
+    }
+}

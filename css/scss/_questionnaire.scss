@@ -1,0 +1,18 @@
+/****************************************************************************
+  Questionare Extended
+ ***************************************************************************/
+.tx-paysafe-questionnaire {
+    .module--questionare {
+        .container .questionare-wrapper {
+            height: auto;
+        }
+
+        &:not(.section--dark) .btn-form {
+            border: 1px solid rgba($brand-color-navy, 0.3);
+        }
+
+        .btn-form {
+            word-wrap: break-word;
+        }
+    }
+}

@@ -1,0 +1,569 @@
+/****************************************************************************
+  Hero Module
+ ***************************************************************************/
+ .section--hero {
+    margin-bottom: map-get($spacers, 8);
+
+    .hero__body {
+        min-height: 650px;
+        padding-top: map-get($spacers, 9);
+
+        > div {
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+            padding-bottom: 70px;
+
+            & > div > *:last-child {
+                margin-bottom: 0px;
+            }
+        }
+
+        p > a.btn {
+            &:first-child {
+                margin-right: map-get($spacers, 6);
+            }
+
+            margin-top: map-get($spacers, 6);
+        }
+
+        .col__image {
+            justify-content: center;
+
+            img {
+                max-width: 100%;
+            }
+
+            &.align-items-end {
+                padding-bottom: 0px;
+            }
+
+            &.col__image--overflow {
+                justify-content: flex-start;
+
+                img {
+                    width: auto;
+                    max-width: none;
+                    max-height: 450px;
+                }
+            }
+        }
+    }
+
+    &.section--hero-plain-text {
+        .hero__body, .hero__body > div {
+            min-height: auto;
+        }
+
+        .hero__body > div {
+            padding-top: map-get($spacers, 9);
+            padding-bottom: map-get($spacers, 7);
+        }
+    }
+
+    &.section--hero-md {
+        .hero__body, .hero__body > div {
+            min-height: 500px;
+        }
+    }
+
+    &.section--hero-sm {
+        .hero__body, .hero__body > div {
+            min-height: 350px;
+        }
+    }
+
+    &.section--hero-xs {
+        .hero__body, .hero__body > div {
+            min-height: none;
+            padding-top: 0px;
+        }
+    }
+
+    &.section--hero-curve-bottom .row > * {
+        padding-bottom: 0px;
+    }
+}
+
+@include media-breakpoint-up(lg) { 
+    .section--hero {
+        margin-bottom: 100px;
+
+        .hero__body {
+            padding-top: 0;
+
+            /* IE11 fix */
+            > div {
+                min-height: 650px;
+            }
+
+            .col__image { 
+                &.col__image--overflow {
+
+                    img {
+                        max-height: none;
+                    }
+                }
+
+                img {
+                    max-width: none;
+                }
+            }
+        }
+
+        &.section--hero-plain-text {
+            .hero__body > div {
+                padding-top: 160px;
+            }
+        }
+
+        &.section--hero-xs {
+            .hero__body, .hero__body > div {
+                min-height: 120px;
+            }
+        }
+    }
+}
+
+.section--hero.hero--object {
+    .hero__body .col__image img {
+        max-width: 100%;
+    }
+
+    @include media-breakpoint-up(lg) { 
+        .hero__body > div {
+            padding-top: map-get($spacers, 10);
+            padding-bottom: map-get($spacers, 10);
+        }
+    }
+}
+
+.section--hero.hero--product {
+    @include media-breakpoint-up(lg) { 
+        &.section--hero-curve-bottom .row > * {
+            padding-bottom: 50px;
+        }
+
+        .hero__body > div {
+            padding-top: map-get($spacers, 10);
+            padding-bottom: map-get($spacers, 10);
+        }
+    }
+}
+
+.section--hero.hero--expertise {
+    @include media-breakpoint-up(lg) { 
+        .hero__body {
+            > div {
+                padding-top: map-get($spacers, 10);
+                padding-bottom: 50px;
+            }
+
+            .col__image {
+                align-items: flex-start;
+                padding-top: 70px;
+                padding-bottom: 0px;
+            }
+        }
+    }
+} 
+
+.section--hero.hero--grid-7-5 {
+    margin-bottom: 0px;
+
+    .hero__body > div:first-child {
+        padding-bottom: map-get($spacers, 7);
+    }
+
+    .hero__body > div:last-child {
+        padding-top: 0;
+    }
+
+    @include media-breakpoint-up(lg) { 
+        .hero__body, .hero__body > div {
+            min-height: 350px;
+        }
+
+        .hero__body > div,
+        .hero__body > div:first-child,
+        .hero__body > div:last-child {
+            padding-top: 160px;
+            padding-bottom: 50px;
+        }
+    }
+}
+
+/****************************************************************************
+  Hero Animations
+ ***************************************************************************/
+.section--hero.hero--anim {
+    .circles--hero,
+    .circles--hero-mobile {
+        position: relative;
+    }
+
+    .circles--hero > span,
+    .circles--hero-mobile > span {
+        display: block;
+        position: absolute;
+        border-radius: 50%;
+        transition: top 0.25s ease-out;
+    }
+
+    
+    @include media-breakpoint-down(md) { 
+        .circles--hero {
+            display: none;
+        }
+    }
+}
+
+.section--hero.hero--solutions.hero--anim {
+    margin-bottom: 0px;
+
+    .hero__body > div {
+        transition: all 0.25s ease-out;  
+    }
+
+    & + section {
+        padding-top: map-get($spacers, 8);
+        position: relative;
+        z-index: 1;
+        background-color: $section-light-bg;
+    }
+    
+    @include media-breakpoint-up(lg) { 
+        & + section {
+            padding-top: 100px;
+        }
+    }
+
+    .background--parallax {
+        transition: background-position 0.25s ease-out;
+        width: 100%;
+        height: 1000px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        overflow: hidden;
+    }
+}
+
+/****************************************************************************
+  Hero Circles Animations Variations
+ ***************************************************************************/
+ .hero--anim-1 {
+    .circles--hero {
+        .circle1 {
+            width: 196px;
+            height: 196px;
+            background-color: $brand-color-lavender;
+            left: calc(50% - 501px);
+        }
+
+        .circle2 {
+            width: 128px;
+            height: 128px;
+            background-color: $brand-color-teal;
+            transform: translateY(420px);
+            left: calc(50% - 610px);
+        }
+
+        .circle3 {
+            width: 194px;
+            height: 194px;
+            background-color: $brand-color-coral;
+            transform: translateY(290px);
+            left: calc(50% - 748px);
+        }
+
+        .circle4 {
+            width: 48px;
+            height: 48px;
+            background-color: $brand-color-tan;
+            transform: translateY(630px);
+            left: calc(50% - 418px);
+        }
+
+        .circle5 {
+            width: 94px;
+            height: 94px;
+            background-color: $brand-color-tan;
+            transform: translateY(70px);
+            left: calc(50% + 198px);
+        }
+
+        .circle6 {
+            width: 184px;
+            height: 184px;
+            background-color: $brand-color-tan;
+            transform: translateY(130px);
+            left: calc(50% + 560px);
+        }
+
+        .circle7 {
+            width: 178px;
+            height: 178px;
+            background-color: $brand-color-teal;
+            transform: translateY(400px);
+            left: calc(50% + 394px);
+        }
+    }
+}
+
+.hero--anim-2 {
+    .circles--hero {
+        .circle1 {
+            width: 372px;
+            height: 372px;
+            background-color: $brand-color-teal;
+            transform: translateY(150px);
+            left: calc(50% - 810px);
+        }
+
+        .circle2 {
+            width: 100px;
+            height: 100px;
+            background-color: $brand-color-tan;
+            transform: translateY(100px);
+            left: calc(50% - 490px);
+        }
+
+        .circle3 {
+            width: 35px;
+            height: 35px;
+            background-color: $brand-color-lavender;
+            transform: translateY(660px);
+            left: calc(50% + 166px);
+        }
+
+        .circle4 {
+            width: 130px;
+            height: 130px;
+            background-color: $brand-color-teal;
+            transform: translateY(444px);
+            left: calc(50% + 160px);
+        }
+
+        .circle5 {
+            width: 280px;
+            height: 280px;
+            background-color: $brand-color-tan;
+            transform: translateY(142px);
+            left: calc(50% + 410px);
+        }
+
+        .circle6 {
+            width: 60px;
+            height: 60px;
+            background-color: $brand-color-lavender;
+            transform: translateY(150px);
+            left: calc(50% + 630px);
+        }
+
+        .circle7 {
+            width: 60px;
+            height: 60px;
+            background-color: $brand-color-teal;
+            transform: translateY(626px);
+            left: calc(50% + 510px);
+        } 
+
+        .circle8 {
+            width: 94px;
+            height: 94px;
+            background-color: $brand-color-teal;
+            transform: translateY(420px);
+            left: calc(50% + 790px);
+        }
+    }
+}
+
+.hero--anim-3 {
+    .circles--hero {
+        .circle1 {
+            width: 375px;
+            height: 375px;
+            background-color: $brand-color-lavender;
+            transform: translateY(196px);
+            left: calc(50% - 860px);
+        }
+
+        .circle2 {
+            width: 100px;
+            height: 100px;
+            background-color: $brand-color-teal;
+            transform: translateY(110px);
+            left: calc(50% - 545px);
+        }
+
+        .circle3 {
+            width: 58px;
+            height: 58px;
+            background-color: $brand-color-lavender;
+            transform: translateY(670px);
+            left: calc(50% + 478px);
+        }
+
+        .circle4 {
+            width: 130px;
+            height: 130px;
+            background-color: $brand-color-lavender;
+            transform: translateY(600px);
+            left: calc(50% - 74px);
+        }
+
+        .circle5 {
+            width: 280px;
+            height: 280px;
+            background-color: $brand-color-teal;
+            transform: translateY(432px);
+            left: calc(50% + 626px);
+        }
+
+        .circle6 {
+            width: 60px;
+            height: 60px;
+            background-color: $brand-color-tan;
+            transform: translateY(360px);
+            left: calc(50% + 690px);
+        }
+    }
+}
+
+.hero--anim-4 {
+    .circles--hero {
+        .circle1 {
+            width: 375px;
+            height: 375px;
+            background-color: $brand-color-coral;
+            transform: translateY(185px);
+            left: calc(50% - 850px);
+        }
+
+        .circle2 {
+            width: 100px;
+            height: 100px;
+            background-color: $brand-color-teal;
+            transform: translateY(100px);
+            left: calc(50% - 530px);
+        }
+
+        .circle3 {
+            width: 35px;
+            height: 35px;
+            background-color: $brand-color-tan;
+            transform: translateY(644px);
+            left: calc(50% + 60px);
+        }
+
+        .circle4 {
+            width: 130px;
+            height: 130px;
+            background-color: $brand-color-coral;
+            transform: translateY(436px);
+            left: calc(50% + 54px);
+        }
+
+        .circle5 {
+            width: 280px;
+            height: 280px;
+            background-color: $brand-color-teal;
+            transform: translateY(164px);
+            left: calc(50% + 510px);
+        }
+
+        .circle6 {
+            width: 64px;
+            height: 64px;
+            background-color: $brand-color-tan;
+            transform: translateY(170px);
+            left: calc(50% + 730px);
+        }
+
+        .circle7 {
+            width: 60px;
+            height: 60px;
+            background-color: $brand-color-coral;
+            transform: translateY(600px);
+            left: calc(50% + 520px);
+        } 
+
+        .circle8 {
+            width: 100px;
+            height: 100px;
+            background-color: $brand-color-teal;
+            transform: translateY(120px);
+            left: calc(50% + 900px);
+        }
+    }
+}
+
+.hero--anim-5 {
+    .circles--hero {
+        .circle1 {
+            width: 320px;
+            height: 320px;
+            background-color: $brand-color-coral;
+            transform: translateY(120px);
+            left: calc(50% - 690px);
+        }
+
+        .circle2 {
+            width: 100px;
+            height: 100px;
+            background-color: $brand-color-lavender;
+            transform: translateY(70px);
+            left: calc(50% - 410px);
+        }
+
+        .circle3 {
+            width: 38px;
+            height: 38px;
+            background-color: $brand-color-tan;
+            transform: translateY(680px);
+            left: calc(50% + 66px);
+        }
+
+        .circle4 {
+            width: 130px;
+            height: 130px;
+            background-color: $brand-color-coral;
+            transform: translateY(544px);
+            left: calc(50% + 66px);
+        }
+
+        .circle5 {
+            width: 280px;
+            height: 280px;
+            background-color: $brand-color-lavender;
+            transform: translateY(96px);
+            left: calc(50% + 586px);
+        }
+
+        .circle6 {
+            width: 60px;
+            height: 60px;
+            background-color: $brand-color-tan;
+            transform: translateY(104px);
+            left: calc(50% + 807px);
+        }
+
+        .circle7 {
+            width: 60px;
+            height: 60px;
+            background-color: $brand-color-coral;
+            transform: translateY(540px);
+            left: calc(50% + 620px);
+        } 
+
+        .circle8 {
+            width: 80px;
+            height: 80px;
+            background-color: $brand-color-teal;
+            transform: translateY(620px);
+            left: calc(50% + 920px);
+        }
+    }
+}
+

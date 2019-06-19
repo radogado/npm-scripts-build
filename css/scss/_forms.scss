@@ -1,0 +1,324 @@
+/****************************************************************************
+  Checkboxes
+ ***************************************************************************/
+.custom-checkbox {
+    padding-left: 0px;
+    margin-bottom: map-get($spacers, 7);
+
+    .custom-control-label {
+        padding-left: 40px;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-color: $white;
+            border-radius: 20px;
+            -webkit-transition: all 0.3s ease-in-out; 
+            transition: all 0.3s ease-in-out; 
+        }
+
+        &::after {
+            position: absolute;
+            left: 0;
+            display: block;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            content: "";
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: $white;                
+            border: $cb-border;
+            border-radius: 4px;
+            -webkit-transition: all 0.3s ease-in-out; 
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    .custom-control-input {
+        &:not([disabled]):checked ~ .custom-control-label {
+            &::before {
+                box-shadow: $cb-box-shadow;
+            }         
+
+            &::after {
+                background: $brand-color-lavender $cb-check;
+                background-size: 60% auto;
+                border-color: $brand-color-lavender;
+            }  
+        }
+
+        &:not([disabled]) ~ .custom-control-label:hover {
+            &::before {
+                box-shadow: $cb-hover-shadow;
+            }
+
+            &::after {
+                border: $cb-hover-border;
+            }
+        }
+
+        &:not([disabled]):focus ~ .custom-control-label::before {
+            box-shadow: $cb-hover-shadow;
+        }
+
+        &:disabled ~ .custom-control-label {
+            color: $cb-disabled-color;
+
+            &::after {
+                background-color: $cb-disabled-bg;
+                border: none;
+            }
+
+            &:checked ~ .custom-control-label::after {
+                background: $cb-check;
+                background-size: 60% auto;
+            }
+        }
+    }
+}
+
+/****************************************************************************
+  Radios
+ ***************************************************************************/
+.label-custom-radio {
+    padding-bottom: map-get($spacers, 6);
+}
+
+.custom-radio {
+    padding-left: 0px;
+    margin-bottom: map-get($spacers, 7);
+
+    .custom-control-label {
+        padding-left: 40px;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-color: $white;
+            border-radius: 20px;
+            -webkit-transition: all 0.3s ease-in-out; 
+            transition: all 0.3s ease-in-out; 
+        }
+
+        &::after {
+            position: absolute;
+            left: 0;
+            display: block;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            content: "";
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: $white;                
+            border: $cb-border;
+            border-radius: 20px;
+            -webkit-transition: all 0.3s ease-in-out; 
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    .custom-control-input {
+        &:not([disabled]):checked ~ .custom-control-label {
+            &::before {
+                box-shadow: $cb-box-shadow;
+            }         
+
+            &::after {
+                background: $brand-color-lavender $cb-check;
+                background-size: 60% auto;
+                border-color: $brand-color-lavender;
+            }  
+        }
+
+        &:not([disabled]) ~ .custom-control-label:hover {
+            &::before {
+                box-shadow: $cb-hover-shadow;
+            }
+
+            &::after {
+                border: $cb-hover-border;
+            }
+        }
+
+        &:not([disabled]):focus ~ .custom-control-label::before {
+            box-shadow: $cb-hover-shadow;
+        }
+
+        &:disabled ~ .custom-control-label {
+            color: $cb-disabled-color;
+
+            &::after {
+                background-color: $cb-disabled-bg;
+                border: none;
+            }
+
+            &:checked ~ .custom-control-label::after {
+                background: $cb-check;
+                background-size: 60% auto;
+            }
+        }
+    }
+}
+
+/****************************************************************************
+  Inputs
+ ***************************************************************************/
+.form-control--slim {
+    @include form-control--slim();
+}
+
+.form-control--search {
+    position: relative;
+
+    button {
+        position: absolute;
+        right: 0;
+        top: 6px;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: url("#{$images}/icons/search-navy.svg") center center no-repeat;
+        border: none;
+        content: "";
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    input {
+        padding-right: map-get($spacers, 8);
+    }
+}
+
+/****************************************************************************
+  Forms
+ ***************************************************************************/
+.form--slim {
+    position: relative;
+
+    .form-group {
+        margin-bottom: map-get($spacers, 9);
+    }
+
+    .form-control {
+        @include form-control--slim();
+    }
+
+    label {
+        color: $form-control-slim-color;
+        -webkit-transition: 0.3s ease;
+        transition: 0.3s ease;
+        margin-bottom: 0px;
+
+        &.active {
+            color: $form-label-slim-active-color;
+            font-size: 14px;
+            -webkit-transform: translateY(-28px);
+            transform: translateY(-28px);
+        }
+
+        &.complete {
+            color: $form-label-slim-complete-color; 
+        }
+    }
+
+    .form-control {
+        margin-top: -32px;
+        height: 44px;
+    }
+
+    textarea.form-control {
+        height: auto;
+    }
+
+    .form__footer {
+        padding-top: map-get($spacers, 9);
+    }
+
+    &.was-validated .form-control:invalid, 
+    .form-control.is-invalid, 
+    &.was-validated .custom-select:invalid, 
+    .custom-select.is-invalid {
+        box-shadow: none;
+    }
+
+    /* .error.help-block is for reCaptcha */
+    .invalid-feedback,
+    .error.help-block {
+        font-size: 14px;
+        line-height: 16px;
+        margin-top: map-get($spacers, 6);
+    }
+
+    .error.help-block {
+        color: $form-feedback-invalid-color;
+    }
+
+    &.was-validated .form-control:valid, 
+    .form-control.is-valid, 
+    &.was-validated .custom-select:valid, 
+    .custom-select.is-valid {
+        border-bottom: $form-control-slim-border;
+        box-shadow: none;
+    }
+
+    &.was-validated .custom-control-input:valid ~ .custom-control-label, 
+    .custom-control-input.is-valid ~ .custom-control-label {
+        color: inherit;
+    }
+
+    &.was-validated .custom-radio .custom-control-input:invalid ~ .invalid-feedback,
+    .custom-radio .custom-control-input.is-invalid ~ .invalid-feedback {
+        display: none;
+    }
+
+    &.was-validated .custom-radio:last-child .custom-control-input:invalid ~ .invalid-feedback,
+    .custom-radio:last-child .custom-control-input.is-invalid ~ .invalid-feedback {
+        display: block;
+    }
+
+    fieldset legend {
+        margin-bottom: map-get($spacers, 8);
+    }
+
+    .tooltip .tooltip-inner {
+        max-width: 100%;
+    }
+}
+
+select.form-control:not([size]):not([multiple]) {  
+    height: auto;
+}
+
+@include media-breakpoint-down(sm) {
+    .form--slim {
+        .btn-group {
+            display: block;
+
+            & > .btn:not(:last-child):not(.dropdown-toggle),
+            & > .btn-group:not(:last-child) > .btn,
+            & > .btn:not(:first-child), 
+            & > .btn-group:not(:first-child) > .btn {
+                border-radius: 100px; 
+                margin-bottom: map-get($spacers, 6);
+                margin-left: map-get($spacers, 6);
+                margin-right: map-get($spacers, 6);
+            }
+        }
+    }
+}
