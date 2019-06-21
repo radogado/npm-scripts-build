@@ -23,12 +23,12 @@
 
 In an NPM-initialized project with `css/style.scss` and `js/script.js`, run
 
-> npm i -D sass -g && npm i -D clean-css-cli -g && npm i -D closure-compiler && npm i -D babel-cli -g && npm i -D @babel/polyfill && npm i -D rollup -g && npm i -D onchange -g && npm i -D -g cross-var
+> npm i -D node-sass && npm i -D clean-css-cli -g && npm i -D closure-compiler && npm i -D babel-cli -g && npm i -D @babel/polyfill && npm i -D rollup -g && npm i -D onchange -g && npm i -D -g cross-var
 
 add this to the `"scripts"` section of `package.json`
 
     "components":         "cross-var bash -c \"cat $npm_package_config_components_folder/**/*.scss > $npm_package_config_components_folder/components.scss && cat $npm_package_config_components_folder/**/*.js > $npm_package_config_components_folder/components.js\"",
-    "sass":               "cross-var \"sass $npm_package_config_components_folder/components.scss $npm_package_config_components_folder/components.css && sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cat $npm_package_config_components_folder/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css\"",
+    "sass":               "cross-var \"node-sass $npm_package_config_components_folder/components.scss $npm_package_config_components_folder/components.css && node-sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cat $npm_package_config_components_folder/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css\"",
     "clean-css":          "cross-var cleancss -o dist/style.min.css $npm_package_config_css_folder/style-with-components.css",
     "closure-compiler":   "cross-var bash -c \"cat $npm_package_config_components_folder/components.js temp/script.rollup.js > temp/script-with-components-and-modules.js && npx google-closure-compiler --language_in=ECMASCRIPT6_STRICT --language_out=ECMASCRIPT_2015 --js=temp/script-with-components-and-modules.js --js_output_file=dist/script.min.js\"",
     "babel":              "babel --minified --compact true dist/script.min.js -o temp/script.babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js temp/script.babel.js > dist/script.babel.js",
