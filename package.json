@@ -26,14 +26,16 @@
     "js:dev": "run-s components:js jscat jsmin:dev",
     "js:prod": "run-s components:js jscat jsmin:prod babel",
     "build": "npm run build:dev",
-    "build:css": "run-s css",
+    "build:css": "npm run css",
     "build:dev": "npm run beforebuild && concurrently \"npm:css\" \"npm:js:dev\" && npm run afterbuild",
     "build:prod": "npm run beforebuild && concurrently \"npm:css\" \"npm:js:prod\" && npm run afterbuild",
     "afterbuild": "rm -rf temp",
 
 	"watch": "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' '$npm_package_config_components_folder/**/*.scss' '$npm_package_config_js_folder/*.js' '$npm_package_config_js_folder/**/*.js' -e '$npm_package_config_components_folder/*.*' -- npm run build:dev\"",
-    "watch:css": "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' '$npm_package_config_components_folder/**/*.scss' -e '$npm_package_config_components_folder/*.*' -- npm run build:css\"",
-    "watch:js": "cross-var bash -c \"onchange '$npm_package_config_js_folder/**/*.js' -- npm run js:dev\""
+        "watch:components:css": "cross-var bash -c \"onchange '$npm_package_config_components_folder/**/*.scss' -e '$npm_package_config_components_folder/*.*' -- 'npm run css:dev'\"",
+    "watch:components:js": "cross-var bash -c \"onchange '$npm_package_config_components_folder/**/*.js' -e '$npm_package_config_components_folder/*.*' -- 'npm run js:dev'\"",
+    "watch:css": "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' -- 'run-s sass:style csscat'\"",
+    "watch:js": "cross-var bash -c \"onchange '$npm_package_config_js_folder/**/*.js' -- run-s jscat jsmin:dev\"",
 
   },
   "author": "",
