@@ -30,11 +30,14 @@ add this to the `"scripts"` section of `package.json`
     "components":         "cross-var bash -c \"cat $npm_package_config_components_folder/**/*.scss > $npm_package_config_components_folder/components.scss && cat $npm_package_config_components_folder/**/*.js > $npm_package_config_components_folder/components.js\"",
     "sass":               "cross-var \"node-sass $npm_package_config_components_folder/components.scss $npm_package_config_components_folder/components.css && node-sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css && cat $npm_package_config_components_folder/components.css $npm_package_config_css_folder/style.css > $npm_package_config_css_folder/style-with-components.css\"",
     "clean-css":          "cross-var cleancss -o dist/style.min.css $npm_package_config_css_folder/style-with-components.css",
-    "js":   "cross-var bash -c \"cat $npm_package_config_components_folder/components.js temp/script.rollup.js > temp/script-with-components-and-modules.js && uglifyjs temp/script-with-components-and-modules.js -o dist/script.min.js -c -m\"",
+    "js":   			  "cross-var bash -c \"cat $npm_package_config_components_folder/components.js temp/script.rollup.js > temp/script-with-components-and-modules.js && uglifyjs temp/script-with-components-and-modules.js -o dist/script.min.js -c -m\"",
     "babel":              "babel --minified --compact true dist/script.min.js -o temp/script.babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js temp/script.babel.js > dist/script.babel.js",
     "rollup":             "cross-var bash -c \"rollup $npm_package_config_js_folder/*.js --dir temp/rollup --format cjs --no-strict && cat temp/rollup/*.js > temp/script.rollup.js\"",
-    "watch":              "cross-var bash -c \"onchange '$npm_package_config_css_folder/style.scss' -- npm run build\"",
+	"watch":              "cross-var bash -c \"npm-run-all --parallel watch:css watch:js watch:views watch:assets\"",
     "watch:css":          "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' '$npm_package_config_components_folder/**/*.scss' -e '$npm_package_config_components_folder/*.*' -- npm run css\"",
+    "watch:js":           "cross-var bash -c \"onchange '$npm_package_config_js_folder/**/*.js' -- npm run js1\"",
+    "watch:views":        "cross-var bash -c \"onchange 'src/*.html' -- npm run views\"",
+    "watch:assets":       "cross-var bash -c \"onchange 'src/resources/assets/**/*.*' -- npm run assets\"",
     "css":                "npm run components && npm run sass && npm run clean-css",
     "build":              "rm -rf temp && mkdir temp && rm -rf dist && mkdir dist && (npm run custom || true) && npm run components && npm run sass && npm run clean-css && npm run rollup && npm run js && npm run babel && rm -rf temp"
 
