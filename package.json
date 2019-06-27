@@ -9,6 +9,7 @@
     "js_folder": "js"
   },
   "scripts": {
+
     "components:scss": "cross-var bash -c \"cat $npm_package_config_components_folder/**/*.scss > $npm_package_config_components_folder/components.scss\"",
     "components:js": "cross-var bash -c \"cat $npm_package_config_components_folder/**/*.js > $npm_package_config_components_folder/components.js\"",
     "sass:components": "cross-var bash -c \"node-sass $npm_package_config_components_folder/components.scss $npm_package_config_components_folder/components.css\"",
@@ -25,7 +26,7 @@
     "js:dev": "run-s components:js jscat jsmin:dev",
     "js:prod": "run-s components:js jscat jsmin:prod babel",
     "build": "npm run build:dev",
-    "build:css": "run-s beforebuild css afterbuild",
+    "build:css": "run-s css",
     "build:dev": "npm run beforebuild && concurrently \"npm:css\" \"npm:js:dev\" && npm run afterbuild",
     "build:prod": "npm run beforebuild && concurrently \"npm:css\" \"npm:js:prod\" && npm run afterbuild",
     "afterbuild": "rm -rf temp",
