@@ -1,7 +1,9 @@
-import displayMessage from './modules/external.js';
+function displayMessage() { 
+   console.log("First script's imported module");
+}
+
 displayMessage();
 
 let someFunc = (a) => { console.log(a); };
 
 someFunc('First script');
-
