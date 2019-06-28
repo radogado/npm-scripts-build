@@ -10,8 +10,10 @@
   },
   "scripts": {
 
-    "components:scss": "cross-var bash -c \"cat $npm_package_config_components_folder/**/*.scss > $npm_package_config_components_folder/components.scss\"",
-    "components:js": "cross-var bash -c \"cat $npm_package_config_components_folder/**/*.js > $npm_package_config_components_folder/components.js\"",
+    "components:scss": "cross-var bash -c \"[ -d '$npm_package_config_components_folder' ] && cat $npm_package_config_components_folder/**/*.scss > $npm_package_config_components_folder/components.scss || (mkdir -p $npm_package_config_components_folder && touch $npm_package_config_components_folder/components.scss)\"",
+    "components:js":   "cross-var bash -c \"[ -d '$npm_package_config_components_folder' ] && cat $npm_package_config_components_folder/**/*.js > $npm_package_config_components_folder/components.js || (mkdir -p $npm_package_config_components_folder && touch $npm_package_config_components_folder/components.js)\"",
+
+
     "sass:components": "cross-var bash -c \"node-sass $npm_package_config_components_folder/components.scss $npm_package_config_components_folder/components.css\"",
     "sass:style": "cross-var bash -c \"node-sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css\"",
     "sass": "concurrently \"npm:sass:components\" \"npm:sass:style\"",
