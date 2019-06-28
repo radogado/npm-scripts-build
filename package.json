@@ -35,7 +35,7 @@
         "watch:components:css": "cross-var bash -c \"onchange '$npm_package_config_components_folder/**/*.scss' -e '$npm_package_config_components_folder/*.*' -- 'npm run css:dev'\"",
     "watch:components:js": "cross-var bash -c \"onchange '$npm_package_config_components_folder/**/*.js' -e '$npm_package_config_components_folder/*.*' -- 'npm run js:dev'\"",
     "watch:css": "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' -- 'run-s sass:style csscat'\"",
-    "watch:js": "cross-var bash -c \"onchange '$npm_package_config_js_folder/**/*.js' -- run-s jscat jsmin:dev\"",
+    "watch:js": "cross-var bash -c \"onchange '$npm_package_config_js_folder/**/*.js' -- run-s jscat jsmin:dev\""
 
   },
   "author": "",
