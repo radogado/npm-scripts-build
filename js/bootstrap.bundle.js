@@ -1,5 +1,4 @@
-console.log('Accordion init');
-console.log('Tooltip init');/*!
+/*!
   * Bootstrap v4.3.1 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -8,7 +7,8 @@ console.log('Tooltip init');/*!
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery')) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery'], factory) :
   (global = global || self, factory(global.bootstrap = {}, global.jQuery));
-}(undefined, function (exports, $) {
+}(this, function (exports, $) { 'use strict';
+
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
 
   function _defineProperties(target, props) {
@@ -5301,7 +5301,7 @@ console.log('Tooltip init');/*!
     };
 
     for (var i = 0, len = elements.length; i < len; i++) {
-      var _ret = _loop(i);
+      var _ret = _loop(i, len);
 
       if (_ret === "continue") continue;
     }
@@ -7010,13 +7010,4 @@ console.log('Tooltip init');/*!
   Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
-function displayMessage() { 
-   console.log("First script's imported module");
-}
-
-displayMessage();
-
-let someFunc = (a) => { console.log(a); };
-
-someFunc('First script');
-console.log('Second script');
+//# sourceMappingURL=bootstrap.bundle.js.map
