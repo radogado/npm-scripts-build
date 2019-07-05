@@ -4,4 +4,3 @@ displayMessage();
 let someFunc = (a) => { console.log(a); };
 
 someFunc('First script');
-

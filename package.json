@@ -9,11 +9,8 @@
     "js_folder": "js"
   },
   "scripts": {
-
     "components:scss": "cross-var bash -c \"[ -d '$npm_package_config_components_folder' ] && cat $npm_package_config_components_folder/**/*.scss > $npm_package_config_components_folder/components.scss || (mkdir -p $npm_package_config_components_folder && touch $npm_package_config_components_folder/components.scss)\"",
-    "components:js":   "cross-var bash -c \"[ -d '$npm_package_config_components_folder' ] && cat $npm_package_config_components_folder/**/*.js > $npm_package_config_components_folder/components.js || (mkdir -p $npm_package_config_components_folder && touch $npm_package_config_components_folder/components.js)\"",
-
-
+    "components:js": "cross-var bash -c \"[ -d '$npm_package_config_components_folder' ] && cat $npm_package_config_components_folder/**/*.js > $npm_package_config_components_folder/components.js || (mkdir -p $npm_package_config_components_folder && touch $npm_package_config_components_folder/components.js)\"",
     "sass:components": "cross-var bash -c \"node-sass $npm_package_config_components_folder/components.scss $npm_package_config_components_folder/components.css\"",
     "sass:style": "cross-var bash -c \"node-sass $npm_package_config_css_folder/style.scss $npm_package_config_css_folder/style.css\"",
     "sass": "concurrently \"npm:sass:components\" \"npm:sass:style\"",
@@ -22,7 +19,7 @@
     "jscat": "cross-var bash -c \"rollup $npm_package_config_js_folder/*.js --dir temp/rollup --format cjs --no-strict && cat temp/rollup/*.js > temp/rollup.js && cat $npm_package_config_components_folder/components.js temp/rollup.js > dist/script.js\"",
     "jsmin:dev": "terser dist/script.js -o dist/script.min.js -m",
     "jsmin:prod": "terser dist/script.js -o dist/script.min.js -m -c",
-    "babel": "babel --minified --compact true dist/script.min.js -o temp/babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js temp/babel.js > dist/script.babel.js",
+    "babel": "babel --minified --compact true dist/script.js -o temp/babel.js && cat ./node_modules/@babel/polyfill/dist/polyfill.min.js temp/babel.js > dist/script.babel.js",
     "beforebuild": "rm -rf temp && mkdir temp",
     "css": "run-s components:scss sass csscat cssmin",
     "js:dev": "run-s components:js jscat jsmin:dev",
@@ -32,13 +29,11 @@
     "build:dev": "npm run beforebuild && concurrently \"npm:css\" \"npm:js:dev\" && npm run afterbuild",
     "build:prod": "npm run beforebuild && concurrently \"npm:css\" \"npm:js:prod\" && npm run afterbuild",
     "afterbuild": "rm -rf temp",
-
-	"watch": "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' '$npm_package_config_components_folder/**/*.scss' '$npm_package_config_js_folder/*.js' '$npm_package_config_js_folder/**/*.js' -e '$npm_package_config_components_folder/*.*' -- npm run build:dev\"",
-        "watch:components:css": "cross-var bash -c \"onchange '$npm_package_config_components_folder/**/*.scss' -e '$npm_package_config_components_folder/*.*' -- 'npm run css:dev'\"",
+    "watch": "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' '$npm_package_config_components_folder/**/*.scss' '$npm_package_config_js_folder/*.js' '$npm_package_config_js_folder/**/*.js' -e '$npm_package_config_components_folder/*.*' -- npm run build:dev\"",
+    "watch:components:css": "cross-var bash -c \"onchange '$npm_package_config_components_folder/**/*.scss' -e '$npm_package_config_components_folder/*.*' -- 'npm run css:dev'\"",
     "watch:components:js": "cross-var bash -c \"onchange '$npm_package_config_components_folder/**/*.js' -e '$npm_package_config_components_folder/*.*' -- 'npm run js:dev'\"",
-    "watch:css": "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' -- 'run-s sass:style csscat'\"",
+    "watch:css": "cross-var bash -c \"onchange '$npm_package_config_css_folder/**/*.scss' -- run-s sass:style csscat\"",
     "watch:js": "cross-var bash -c \"onchange '$npm_package_config_js_folder/**/*.js' -- run-s jscat jsmin:dev\""
-
   },
   "author": "",
   "license": "ISC",
